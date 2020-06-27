@@ -14,21 +14,22 @@ class Search extends Component {
   };
     
   state = {
-      userInput: '',
+      query: '',
       searchedBooks: [] ,
       showError: false
   };
     
-  searchBook(event){
-      const userIn = event.target.value;
-        this.setState({ userInput: userIn });
+  searchBook(query){
+      // const userIn = event.target.value;
+      //   this.setState({ query });
         // call Api to fetch books 
         // if (userInput) {
-          BooksAPI.search(userIn.trim(), 20).then(books => {
+          BooksAPI.search(query.trim(), 20).then(books => {
             books.length > 0 ? 
                 this.setState({ searchedBooks: books, showError: false })
               : this.setState({ searchedBooks: [],  showError: true });
           });
+          this.setState({ query });
           // if user input is empty
         // } else {
         //   this.setState({ searchedBooks: [], showError: false });
@@ -38,7 +39,7 @@ class Search extends Component {
 render() {
 
   const { books, changeShelf } = this.props;
-  const { userInput, searchedBooks, showError } = this.state;
+  const { query, searchedBooks, showError } = this.state;
 
   return (
         <div className="search-books">
@@ -50,8 +51,8 @@ render() {
                 <input 
                   type="text" 
                   placeholder="Search by title or author"
-                  value={userInput}
-                  onChange={this.searchBook}
+                  value={query}
+                  onChange={e => this.searchBook(e.target.value)}
                 />
                 </div>
             </div>

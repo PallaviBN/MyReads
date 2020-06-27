@@ -10,15 +10,18 @@ class ShowBooks extends Component {
         changeShelf: PropTypes.func.isRequired
     };
   
-    updateShelf = event =>
-    this.props.changeShelf(this.props.book, event.target.value);
-
+   constructor(props) {
+        super(props);
+        this.changeShelf = this.uShelf.bind(this);
+   };
+    uShelf = event =>
+      this.props.changeShelf(this.props.book, event.target.value);
    render() {
 
        const { book, books} = this.props;
 
        const bookTitle = book.title;
-       const bookCover = book.imageLinks && book.imageLinks.thumbnail ? book.imageLinks.smallThumbnail : 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSU-3VMMY2V4vuFDP2JQSO9KM1yKjAZSIhmUw&usqp=CAU';
+       const bookCover = book.imageLinks && book.imageLinks.smallThumbnail ? book.imageLinks.smallThumbnail : 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSU-3VMMY2V4vuFDP2JQSO9KM1yKjAZSIhmUw&usqp=CAU';
        let currentShelf = 'none';
 
        // if book is in current list, set current shelf to book.shelf
@@ -38,7 +41,7 @@ class ShowBooks extends Component {
                        />
                        
                        <div className="book-shelf-changer">
-                           <select onChange={this.updateShelf} defaultValue={currentShelf}>
+                           <select onChange={this.uShelf} defaultValue={currentShelf}>
                                <option value="none" disabled>Move to... </option>
                                <option value="currentlyReading">Currently Reading</option>
                                <option value="wantToRead">Want to Read</option>

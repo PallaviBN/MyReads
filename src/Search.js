@@ -21,19 +21,18 @@ class Search extends Component {
     
   searchBook(query){
       // const userIn = event.target.value;
-      //   this.setState({ query });
+        this.setState({ query });
         // call Api to fetch books 
-        // if (userInput) {
+        if (query) {
           BooksAPI.search(query.trim(), 20).then(books => {
             books.length > 0 ? 
                 this.setState({ searchedBooks: books, showError: false })
               : this.setState({ searchedBooks: [],  showError: true });
           });
-          this.setState({ query });
-          // if user input is empty
-        // } else {
-        //   this.setState({ searchedBooks: [], showError: false });
-        // }
+          //if user input is empty
+        } else {
+          this.setState({ searchedBooks: [], showError: false });
+        }
       };
    
 render() {
@@ -50,18 +49,18 @@ render() {
                 <div className="search-books-input-wrapper">
                 <input 
                   type="text" 
-                  placeholder="Search by title or author"
+                  placeholder="Search by title"
                   value={query}
                   onChange={e => this.searchBook(e.target.value)}
                 />
                 </div>
             </div>
 
-            {showError && (
-            <h4>No Book Found. Try searhing any other!</h4>
-            )}
 
             <div className="search-books-results">
+            {showError && (
+            <h4 id="errmsg">No Book Found. Please try again!</h4>
+            )}
             {searchedBooks.length > 0 && (
             <div>
               <h3>Found {searchedBooks.length} related books </h3>

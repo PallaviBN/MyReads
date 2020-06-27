@@ -10,12 +10,12 @@ class ShowBooks extends Component {
         changeShelf: PropTypes.func.isRequired
     };
   
-   constructor(props) {
-        super(props);
-        this.changeShelf = this.uShelf.bind(this);
+   updateShelf = event => {
+     this.props.changeShelf(this.props.book, event.target.value)
+     alert("Book added to your selected Shelf!!")
    };
-    uShelf = event =>
-      this.props.changeShelf(this.props.book, event.target.value);
+  
+
    render() {
 
        const { book, books} = this.props;
@@ -41,7 +41,7 @@ class ShowBooks extends Component {
                        />
                        
                        <div className="book-shelf-changer">
-                           <select onChange={this.uShelf} defaultValue={currentShelf}>
+                           <select onChange={this.updateShelf} defaultValue={currentShelf}>
                                <option value="none" disabled>Move to... </option>
                                <option value="currentlyReading">Currently Reading</option>
                                <option value="wantToRead">Want to Read</option>
@@ -59,6 +59,7 @@ class ShowBooks extends Component {
                    ))}
                </div>
            </li>
+           
        );
    }
 };

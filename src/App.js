@@ -16,7 +16,7 @@ class BooksApp extends React.Component {
     BooksAPI.getAll().then(books => this.setState({ books }));
   }
 
-  changeShelf(selectedBook, newShelf){
+  changeShelf = (selectedBook, newShelf) => {
     BooksAPI.update(selectedBook, newShelf).then(res => {
       // update shelf for selected book
       selectedBook.shelf = newShelf;

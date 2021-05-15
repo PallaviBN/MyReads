@@ -4,7 +4,7 @@ The  project is a part of REACT NANODEGREE program by UDACITY. It is built with 
 
 ## Overview
 
-MyReads lets you categorize your book based on 3 shelfs 'Currently Reading', 'Want to Read' and 'Read'. You can move to any of the shelfs according to your wish. There is another functionality where one can search a book. Based on the search results find out the desired book and move it to any of the shelfs.
+MyReads lets you categorize your book based on 3 shelfs 'Currently Reading', 'Want to Read' and 'Read'. You can move to any of the shelfs according to your wish. There is another functionality where one can search a book. Based on the search results find out the desired book and move it to any of the shelves.
 
 ## Installing and Running
 
